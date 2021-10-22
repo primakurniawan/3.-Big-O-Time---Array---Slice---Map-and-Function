@@ -9,18 +9,20 @@ import (
 func munculSekali(angka string) []int {
 
 	// your code here
-	list := []int{}
+	var list map[int]int
+	list = map[int]int{}
+	var sliceOnce []int
 	intSlice := strings.Split(angka, "")
-	for _, item := range intSlice {
-		i, _ := strconv.Atoi(item)
-		if _, value := allKeys[i]; !value {
-			allKeys[i] = true
-			list = append(list, i)
-		}
-
+	for _, v := range intSlice {
+		i, _ := strconv.Atoi(v)
+		list[i]++
 	}
-	return list
-
+	for i, _ := range list {
+		if list[i] == 1 {
+			sliceOnce = append(sliceOnce, i)
+		}
+	}
+	return sliceOnce
 }
 
 func main() {
@@ -35,4 +37,6 @@ func main() {
 
 	fmt.Println(munculSekali("0872504")) // [8 7 2 5 4]
 
+	try := 2 ^ 7 ^ 3
+	fmt.Println(try)
 }
